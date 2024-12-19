@@ -1,0 +1,14 @@
+C:\Users\sabir\RiderProjects\InvertedIndex\InvertedIndex\bin\Debug\net8.0\InvertedIndex.exe
+C:\Users\sabir\RiderProjects\InvertedIndex\InvertedIndex\bin\Debug\net8.0\InvertedIndex.deps.json
+C:\Users\sabir\RiderProjects\InvertedIndex\InvertedIndex\bin\Debug\net8.0\InvertedIndex.runtimeconfig.json
+C:\Users\sabir\RiderProjects\InvertedIndex\InvertedIndex\bin\Debug\net8.0\InvertedIndex.dll
+C:\Users\sabir\RiderProjects\InvertedIndex\InvertedIndex\bin\Debug\net8.0\InvertedIndex.pdb
+C:\Users\sabir\RiderProjects\InvertedIndex\InvertedIndex\obj\Debug\net8.0\InvertedIndex.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sabir\RiderProjects\InvertedIndex\InvertedIndex\obj\Debug\net8.0\InvertedIndex.AssemblyInfoInputs.cache
+C:\Users\sabir\RiderProjects\InvertedIndex\InvertedIndex\obj\Debug\net8.0\InvertedIndex.AssemblyInfo.cs
+C:\Users\sabir\RiderProjects\InvertedIndex\InvertedIndex\obj\Debug\net8.0\InvertedIndex.csproj.CoreCompileInputs.cache
+C:\Users\sabir\RiderProjects\InvertedIndex\InvertedIndex\obj\Debug\net8.0\InvertedIndex.dll
+C:\Users\sabir\RiderProjects\InvertedIndex\InvertedIndex\obj\Debug\net8.0\refint\InvertedIndex.dll
+C:\Users\sabir\RiderProjects\InvertedIndex\InvertedIndex\obj\Debug\net8.0\InvertedIndex.pdb
+C:\Users\sabir\RiderProjects\InvertedIndex\InvertedIndex\obj\Debug\net8.0\InvertedIndex.genruntimeconfig.cache
+C:\Users\sabir\RiderProjects\InvertedIndex\InvertedIndex\obj\Debug\net8.0\ref\InvertedIndex.dll
