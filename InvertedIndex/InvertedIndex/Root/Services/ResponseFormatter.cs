@@ -4,7 +4,7 @@ namespace InvertedIndex.Root.Services;
 
 public class ResponseFormatter
 {
-    private const string DataPath = @"C:\Users\sabir\RiderProjects\InvertedIndex\InvertedIndex\Data";
+    private readonly string _dataPath = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "Data");
     
     public string FormatResponse(List<string> indexes, string word)
     {
@@ -12,7 +12,7 @@ public class ResponseFormatter
 
         foreach (var index in indexes)
         {
-            var path = $"{DataPath}\\{index}";
+            var path = $"{_dataPath}\\{index}";
             var text = File.ReadAllText(path);
             var sentences = text.Split(new[]{'.', '!', '?'}, StringSplitOptions.RemoveEmptyEntries);
             
