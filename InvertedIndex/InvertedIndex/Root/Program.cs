@@ -1,4 +1,5 @@
 ﻿
+using System.Diagnostics;
 using InvertedIndex.Root.Index;
 using InvertedIndex.Root.Services;
 
@@ -8,20 +9,37 @@ public class Program
 {
     static async Task Main()
     {
-        var server  = new Server();
-        server.Init();
-        await server.StartServer();
+        // var server  = new Server();
+        // server.Init();
+        // await server.StartServer();
+        
+        // var reader = new FilesReader();
+        // var index = new Index.InvertedIndex();
+        // var builder = new IndexBuilder(1, reader, index);
+        // builder.RebuildIndex(null);
+        //
+        // while(index.IsBuilded == false)
+        //     continue;
+        //
+        // Console.WriteLine("ended");
+        TestIndexBuilder();
     }
 
-    private void TestIndexBuilder()
+    private static void TestIndexBuilder()
     {
-        for (int i = 1; i < 1025; i*=2)
+        for (int i = 1; i < 5000; i*=2)
         {
+            var watch = new Stopwatch();
+            watch.Start();
             var reader = new FilesReader();
-            var index = new Index.InvertedIndex();
-            var builder = new IndexBuilder(i, reader, index);
-            Console.WriteLine(i);
-            builder.RebuildIndex(null);   
+            var index = new Index.InvertedIndex(i);
+            var builder = new IndexBuilder(reader, index);
+            builder.RebuildIndex(null);
+            while(index.IsBuilded == false)
+                continue;
+            
+            watch.Stop();
+            Console.WriteLine("Time for " + i + " threads: " + watch.ElapsedMilliseconds);
         }
     }
 }

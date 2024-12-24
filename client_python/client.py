@@ -104,7 +104,7 @@ def main():
     params = {"input": random.choice(random_words)}
     num_requests = 1000
     interval = 0.1
-    total_time = 10
+    total_time = 3
 
     request_thread = threading.Thread(
         target=continuous_requests,

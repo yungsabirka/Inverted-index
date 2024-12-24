@@ -9,7 +9,7 @@ public class Server
 {
     private HttpListener _listener = new();
     private ThreadPool.ThreadPool _pool = new(4, 2);
-    private Index.InvertedIndex _invertedIndex = new();
+    private Index.InvertedIndex _invertedIndex = new(4);
     private FilesReader _filesReader = new();
     private ResponseFormatter _formatter = new();
     private IndexBuilder _indexBuilder;
@@ -18,7 +18,7 @@ public class Server
 
     public void Init()
     {
-        _indexBuilder = new IndexBuilder(2, _filesReader, _invertedIndex);
+        _indexBuilder = new IndexBuilder(_filesReader, _invertedIndex);
         _pool.InitiateThreads();
         _indexBuilder.RebuildIndex(null);
         _listener.Prefixes.Add("http://localhost:8080/");
