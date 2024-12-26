@@ -4,12 +4,10 @@ namespace InvertedIndex.Root.Index;
 
 public class IndexDictionary
 {
-    public List<List<IndexEntity>> IndexList = new(8);
-
+    private List<List<IndexEntity>> _indexList = new(8);
+    private BlockingCollection<(string Key, string Value, int Position)>[] _queues;
     private Thread[] _threads;
     private object _locker = new();
-    private BlockingCollection<(string Key, string Value, int Position)>[] _queues;
-
 
     public IndexDictionary(int threadsCount)
     {
@@ -42,16 +40,15 @@ public class IndexDictionary
     {
         CheckCapacity(position);
 
-        var entity = IndexList[position].Find(entity => entity.Key == key);
-        if(entity == null)
-            IndexList[position].Add(new IndexEntity(key, value));
+        var entity = _indexList[position].Find(entity => entity.Key == key);
+        if (entity == null)
+            _indexList[position].Add(new IndexEntity(key, value));
         else
         {
-            if(entity.Values.Contains(value) == false)
+            if (entity.Values.Contains(value) == false)
                 entity.Values.Add(value);
         }
     }
-
 
     public void Add(string key, string value)
     {
@@ -64,10 +61,10 @@ public class IndexDictionary
     {
         var position = HashKey(key);
 
-        if (position > IndexList.Count || IndexList[position].Count == 0)
+        if (position > _indexList.Count || _indexList[position].Count == 0)
             return null;
-        
-        var entity = IndexList[position].Find(entity => entity.Key == key);
+
+        var entity = _indexList[position].Find(entity => entity.Key == key);
 
         return entity?.Values;
     }
@@ -76,15 +73,15 @@ public class IndexDictionary
     {
         lock (_locker)
         {
-            if (IndexList.Count <= position)
-            {
-                int newCapacity = Math.Max(IndexList.Count * 2, position + 1);
-                IndexList.Capacity = newCapacity;
+            if (_indexList.Count > position)
+                return;
 
-                while (IndexList.Count < newCapacity)
-                {
-                    IndexList.Add([]);
-                }
+            var newCapacity = Math.Max(_indexList.Count * 2, position + 1);
+            _indexList.Capacity = newCapacity;
+
+            while (_indexList.Count < newCapacity)
+            {
+                _indexList.Add([]);
             }
         }
     }

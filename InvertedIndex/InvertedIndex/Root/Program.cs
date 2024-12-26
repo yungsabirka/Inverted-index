@@ -1,5 +1,4 @@
-﻿
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using InvertedIndex.Root.Index;
 using InvertedIndex.Root.Services;
 
@@ -9,20 +8,10 @@ public class Program
 {
     static async Task Main()
     {
-        // var server  = new Server();
-        // server.Init();
-        // await server.StartServer();
-        
-        // var reader = new FilesReader();
-        // var index = new Index.InvertedIndex();
-        // var builder = new IndexBuilder(1, reader, index);
-        // builder.RebuildIndex(null);
-        //
-        // while(index.IsBuilded == false)
-        //     continue;
-        //
-        // Console.WriteLine("ended");
-        TestIndexBuilder();
+        var server  = new Server();
+        server.Init();
+        await server.StartServer();
+        //TestIndexBuilder();
     }
 
     private static void TestIndexBuilder()

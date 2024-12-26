@@ -33,7 +33,6 @@ public class Server
         while (_isRunning)
         {
             var context = await _listener.GetContextAsync();
-            // Console.WriteLine($"Client connected: {context.Request.RemoteEndPoint}");
             await Task.Run(() => HandleClientRequestAsync(context));
         }
     }
@@ -42,10 +41,10 @@ public class Server
     {
         var request = context.Request;
         var response = context.Response;
-        
+
         if (request.HttpMethod == "OPTIONS")
         {
-            response.StatusCode = 204; 
+            response.StatusCode = 204;
             response.AddHeader("Access-Control-Allow-Origin", "*");
             response.AddHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
             response.AddHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Max-Age");
@@ -78,7 +77,7 @@ public class Server
             throw new Exception($"Internal server error: {ex.Message}");
         }
     }
-    
+
     private async Task SendIndexesAsync(HttpListenerResponse response, string word)
     {
         try
@@ -111,7 +110,6 @@ public class Server
         await response.OutputStream.WriteAsync(buffer);
         response.Close();
     }
-
 
     public void StopServer()
     {
